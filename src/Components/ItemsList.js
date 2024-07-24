@@ -3,7 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchItems } from "../Redux/itemsAction";
 import "./ItemsList.css";
 import { BsArrowRightCircle } from "react-icons/bs";
+import { IoMdHome } from "react-icons/io";
 import { format } from "date-fns";
+import { PiBuildingsFill } from "react-icons/pi";
+import { GiPathDistance } from "react-icons/gi";
+import { BiSolidCalendar } from "react-icons/bi";
+import { FaArrowRight } from "react-icons/fa6";
 
 const ItemsList = () => {
   const dispatch = useDispatch();
@@ -51,7 +56,7 @@ const ItemsList = () => {
             <li key={item.estimate_id} className="item">
               <div className="item-header">
                 <strong>From</strong>
-                <strong>To</strong>
+                <strong className="strong_to">To</strong>
                 <strong>Request#</strong>
               </div>
               <div className="item-details">
@@ -63,16 +68,19 @@ const ItemsList = () => {
                 </span>
               </div>
               <div className="item-meta">
-                <span>
-                  {item.property_size}
-                  {item.total_items}
-                  {item.distance}
-                  {format(new Date(item.moving_on), "MMM dd, yyyy 'at' h a")}
+                <span className="icons_clr">
+                <IoMdHome />{item.property_size}</span>
+                 <span className="icons_clr"> <PiBuildingsFill />{item.total_items}</span>
+                 <span className="icons_clr"> <GiPathDistance />{item.distance}</span>
+                 <span className="icons_clr"> <BiSolidCalendar />{format(new Date(item.moving_on), "MMM dd, yyyy 'at' h a")}
                 </span>
-                <button onClick={() => toggleDetails(item.estimate_id)}>
+                <div>
+                <span><button className='btn-move'onClick={() => toggleDetails(item.estimate_id)}>
                   View Move Details
-                </button>
-                <button>Quotes Awaiting</button>
+                </button></span>
+               <span></span> <button className='btn-quotes'>Quotes Awaiting</button>
+                </div>
+                
               </div>
               {expandedItems[item.estimate_id] && (
                 <div className="item-details-dropdown">
