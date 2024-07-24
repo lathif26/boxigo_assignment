@@ -1,0 +1,22 @@
+.nav-link {
+  color: black !important;
+
+}
+.nav-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 4px solid transparent;
+    cursor: pointer;
+}
+.nav-item a{
+    font-size: 15px;
+    font-weight: 700;
+}
+.nav-item.active {
+  border-left: 4px solid #e8590d;
+}
+
+.nav-icon {
+  margin-left: 10px;
+}
